@@ -12,7 +12,7 @@ def runDSS( file ):
     dssText = dssObj.Text
     dssCircuit = dssObj.ActiveCircuit
     dssText.Command = 'clear'
-    dssText.Command = 'compile '+ file
+    dssText.Command = 'compile "'+ file + '"'
     dssText.Command = 'set maxcontroliter = 500'
     dssText.Command = 'solve'
     return dssText, dssCircuit

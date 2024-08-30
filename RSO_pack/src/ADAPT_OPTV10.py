@@ -129,6 +129,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
     Nsize = [G.nodes[u]['size'] for u in G.nodes]
     if(Sho_Plots):
         nx.draw(G,pos=pos,with_labels=1,edge_color=Ecolors,width = Ewidth,node_size=Nsize,node_color = Ncolors)
+        plt.savefig(os.path.join(Main_dir,"pso_plot.png"))
     
     # %% Find Source Buses
     kk=0
@@ -812,7 +813,8 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
         ga_instance.run()
         
         if(Sho_Plots):
-            ga_instance.plot_fitness()
+            fitness_figure = ga_instance.plot_fitness()
+            fitness_figure.savefig(os.path.join(Main_dir,"fitness_plot.png"))
         
         solution, solution_fitness, solution_idx = ga_instance.best_solution(ga_instance.last_generation_fitness)
         #print("Solution", solution)
